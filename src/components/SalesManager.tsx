@@ -118,11 +118,11 @@ const SalesManager: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 max-w-xl">
       <h1 className="text-3xl font-bold mb-4 text-center">Sales Manager</h1>
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
-      <form onSubmit={handleSubmit} className="mb-8 bg-gray-100 p-6 rounded-lg shadow-md">
+      <form onSubmit={handleSubmit} className="mb-8 bg-gray-300 p-6 rounded-lg shadow-md">
         <div className="mb-4">
           <label className="block text-gray-700">Name</label>
           <input
@@ -174,7 +174,7 @@ const SalesManager: React.FC = () => {
       {/* Sales List */}
       <div className="grid gap-4">
         {sales.map(sale => (
-          <div key={sale.id} className="p-4 bg-white rounded-lg shadow-md">
+          <div key={sale.id} className="p-4 bg-gray-300 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold">{sale.name}</h2>
             <p>Price: ${sale.price.toFixed(2)}</p>
             <p>Delivery: ${sale.delivery.toFixed(2)}</p>
