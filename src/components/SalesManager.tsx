@@ -29,7 +29,32 @@ const SalesManager: React.FC = () => {
     try {
       const res = await fetch('http://localhost:3000/api/sales');
       if (!res.ok) throw new Error('Failed to fetch sales');
-      const data: Sale[] = await res.json();
+      const rawData = await res.json();
+
+      // Convert string values to numbers
+      const data: Sale[] = rawData.map((item: any) => ({
+        id: Number(item.id),
+        name: item.name,
+        price: Number(parseFloat(item.price)),
+        delivery: Number(parseFloat(item.delivery)),
+        TOTAL: Number(parseFloat(item.TOTAL)),
+      }));
+
+      // Validate data
+      const isValid = data.every(
+        (sale) =>
+          typeof sale.id === 'number' &&
+          typeof sale.name === 'string' &&
+          typeof sale.price === 'number' &&
+          !isNaN(sale.price) &&
+          typeof sale.delivery === 'number' &&
+          !isNaN(sale.delivery) &&
+          typeof sale.TOTAL === 'number' &&
+          !isNaN(sale.TOTAL),
+      );
+
+      if (!isValid) throw new Error('Invalid sales data format');
+
       setSales(data);
       setError(null);
     } catch (err) {
