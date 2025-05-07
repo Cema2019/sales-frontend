@@ -119,7 +119,7 @@ const SalesManager: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4 max-w-xl">
-      <h1 className="text-3xl font-bold mb-4 text-center">Sales Manager</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center">Inventory Manager</h1>
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
       <form onSubmit={handleSubmit} className="mb-8 bg-gray-300 p-6 rounded-lg shadow-md">
@@ -159,7 +159,7 @@ const SalesManager: React.FC = () => {
           type="submit"
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
-          {formData.id ? 'Update Sale' : 'Create Sale'}
+          {formData.id ? 'Update Product' : 'Add Product'}
         </button>
         {formData.id && (
             <button
