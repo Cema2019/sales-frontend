@@ -113,7 +113,19 @@ const SalesManager: React.FC = () => {
         price: sale.price.toString(),
         delivery: sale.delivery.toString(),
       });
+    } else {
+      // Reset formData for View to ensure details section shows
+      setFormData({ id: null, name: '', price: '', delivery: '' });
     }
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedSale(null);
+  };
+
+  const handleResetForm = () => {
+    setFormData({ id: null, name: '', price: '', delivery: '' });
+    setSelectedSale(null);
   };
 
   return (
@@ -160,6 +172,14 @@ const SalesManager: React.FC = () => {
         >
           {formData.id ? 'Update Sale' : 'Create Sale'}
         </button>
+        {formData.id && (
+            <button
+                onClick={() => handleResetForm()}
+                className="bg-yellow-500 text-white ms-2 px-4 py-2 rounded hover:bg-yellow-600"
+              >
+                Reset
+              </button>)
+            }
       </form>
 
       {/* Sales List */}
@@ -195,13 +215,19 @@ const SalesManager: React.FC = () => {
       </div>
 
       {/* Selected Sale Details */}
-      {selectedSale && !formData.id && (
+      {selectedSale && (
         <div className="mt-8 p-4 bg-gray-100 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold">Selected Sale</h2>
           <p>Name: {selectedSale.name}</p>
           <p>Price: ${selectedSale.price.toFixed(2)}</p>
           <p>Delivery: ${selectedSale.delivery.toFixed(2)}</p>
           <p>Total: ${selectedSale.TOTAL.toFixed(2)}</p>
+          <button
+            onClick={handleCloseDetails}
+            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Close
+          </button>
         </div>
       )}
     </div>
