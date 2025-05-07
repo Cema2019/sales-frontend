@@ -31,7 +31,6 @@ const SalesManager: React.FC = () => {
       if (!res.ok) throw new Error('Failed to fetch sales');
       const rawData = await res.json();
 
-      // Convert string values to numbers
       const data: Sale[] = rawData.map((item: any) => ({
         id: Number(item.id),
         name: item.name,
@@ -40,7 +39,6 @@ const SalesManager: React.FC = () => {
         TOTAL: Number(parseFloat(item.TOTAL)),
       }));
 
-      // Validate data
       const isValid = data.every(
         (sale) =>
           typeof sale.id === 'number' &&
@@ -104,23 +102,14 @@ const SalesManager: React.FC = () => {
     }
   };
 
-  const handleViewOrEdit = (sale: Sale, isEdit: boolean) => {
+  const handleEdit = (sale: Sale) => {
     setSelectedSale(sale);
-    if (isEdit) {
       setFormData({
         id: sale.id,
         name: sale.name,
         price: sale.price.toString(),
         delivery: sale.delivery.toString(),
       });
-    } else {
-      // Reset formData for View to ensure details section shows
-      setFormData({ id: null, name: '', price: '', delivery: '' });
-    }
-  };
-
-  const handleCloseDetails = () => {
-    setSelectedSale(null);
   };
 
   const handleResetForm = () => {
@@ -192,13 +181,7 @@ const SalesManager: React.FC = () => {
             <p>Total: ${sale.TOTAL.toFixed(2)}</p>
             <div className="mt-2 space-x-2">
               <button
-                onClick={() => handleViewOrEdit(sale, false)}
-                className="bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600"
-              >
-                View
-              </button>
-              <button
-                onClick={() => handleViewOrEdit(sale, true)}
+                onClick={() => handleEdit(sale)}
                 className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600"
               >
                 Edit
@@ -213,23 +196,6 @@ const SalesManager: React.FC = () => {
           </div>
         ))}
       </div>
-
-      {/* Selected Sale Details */}
-      {selectedSale && (
-        <div className="mt-8 p-4 bg-gray-100 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold">Selected Sale</h2>
-          <p>Name: {selectedSale.name}</p>
-          <p>Price: ${selectedSale.price.toFixed(2)}</p>
-          <p>Delivery: ${selectedSale.delivery.toFixed(2)}</p>
-          <p>Total: ${selectedSale.TOTAL.toFixed(2)}</p>
-          <button
-            onClick={handleCloseDetails}
-            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
-            Close
-          </button>
-        </div>
-      )}
     </div>
   );
 };
