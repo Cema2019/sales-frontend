@@ -1,7 +1,8 @@
 
 # Product Inventory Frontend
 
-A simple and intuitive web application for managing a product inventory. This frontend serves as a user interface to interact with an Express.js and also a FastAPI backend API, enabling CRUD (Create, Read, Update, Delete) operations on sales items.
+A simple and intuitive web application for managing a product inventory. This frontend serves as a user interface to interact with an [Express.js backend](https://github.com/Cema2019/sales-api) and a [FastAPI backend](https://github.com/Cema2019/product-inventory-backend), enabling CRUD (Create, Read, Update, Delete) operations on sales items.
+
 
 ## ✨ Features
 
