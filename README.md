@@ -1,54 +1,91 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Product Inventory Frontend
 
-Currently, two official plugins are available:
+A simple and intuitive web application for managing a product inventory. This frontend serves as a user interface to interact with an Express.js and also a FastAPI backend API, enabling CRUD (Create, Read, Update, Delete) operations on sales items.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- **Display Sales:** Fetch and display a list of all sales items with price, delivery, and total.
+- **Add New Sales:** Fill out a form to create and add new sales items to the database.
+- **Update Sales:** Edit existing sales items directly from the list.
+- **Delete Sales:** Remove sales items from the database.
+- **Responsive UI:** Clean, responsive design built with Tailwind CSS.
+- **Form Validation & Error Handling:** Ensures input correctness and shows errors for failed API calls.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🖼 Screenshot
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+![Product Inventory App Screenshot](image.png)
+
+## 🚀 Getting Started
+
+Follow these instructions to get the project running locally.
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- **Node.js** (LTS version recommended)
+- **npm** or **Yarn**
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Cema2019/sales-frontend.git
+cd sales-frontend
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+or
+
+```bash
+yarn
+```
+
+### Configuration
+
+This frontend application is designed to work with a backend API whether Express.js or FastAPI. Make sure the backend server is running at:
+
+```
+http://localhost:3000
+```
+
+CORS must be enabled on the backend for `http://localhost:5173`.
+
+### Running the App
+
+To start the development server:
+
+```bash
+npm run dev
+```
+
+The application will open in your browser at:
+
+```
+http://localhost:5173
+```
+
+## 🧩 Technologies Used
+
+- **React** – Library for building user interfaces.
+- **TypeScript** – Strongly typed language built on JavaScript.
+- **Tailwind CSS** – Utility-first CSS framework for rapid UI development.
+- **Fetch API** – For making API requests to the backend.
+
+## 📝 Usage
+
+- **Add Product:** Fill in `Name`, `Price`, and `Delivery`, then click **Add Product**.
+- **Edit Product:** Click **Edit**, modify the fields, then click **Update Product**.
+- **Delete Product:** Click **Delete** to remove a product.
+- **Reset Form:** Click **Reset** to cancel editing.
+
+## 📄 License
+
+MIT
