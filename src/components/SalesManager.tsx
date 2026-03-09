@@ -5,7 +5,7 @@ interface Sale {
   name: string;
   price: number;
   delivery: number;
-  TOTAL: number;
+  total: number;
 }
 
 interface FormData {
@@ -36,7 +36,7 @@ const SalesManager: React.FC = () => {
         name: item.name,
         price: Number(parseFloat(item.price)),
         delivery: Number(parseFloat(item.delivery)),
-        TOTAL: Number(parseFloat(item.TOTAL)),
+        total: Number(parseFloat(item.total)),
       }));
 
       const isValid = data.every(
@@ -47,8 +47,8 @@ const SalesManager: React.FC = () => {
           !isNaN(sale.price) &&
           typeof sale.delivery === 'number' &&
           !isNaN(sale.delivery) &&
-          typeof sale.TOTAL === 'number' &&
-          !isNaN(sale.TOTAL),
+          typeof sale.total === 'number' &&
+          !isNaN(sale.total),
       );
 
       if (!isValid) throw new Error('Invalid sales data format');
@@ -178,7 +178,7 @@ const SalesManager: React.FC = () => {
             <h2 className="text-xl font-semibold">{sale.name}</h2>
             <p>Price: ${sale.price.toFixed(2)}</p>
             <p>Delivery: ${sale.delivery.toFixed(2)}</p>
-            <p>Total: ${sale.TOTAL.toFixed(2)}</p>
+            <p>total: ${sale.total.toFixed(2)}</p>
             <div className="mt-2 space-x-2">
               <button
                 onClick={() => handleEdit(sale)}
