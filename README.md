@@ -79,6 +79,7 @@ http://localhost:5173
 - **TypeScript** – Strongly typed language built on JavaScript.
 - **Tailwind CSS** – Utility-first CSS framework for rapid UI development.
 - **Fetch API** – For making API requests to the backend.
+- **Zod** - Runtime schema validation used to safely parse API responses and ensure correct data types.
 
 ## 📝 Usage
 
